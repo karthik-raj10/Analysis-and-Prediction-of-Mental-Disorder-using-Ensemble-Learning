@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: url("https://img.freepik.com/premium-photo/copy-space-blue-circuits-digital-background_629685-9503.jpg") no-repeat center center/cover;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    input {
+      padding: 10px;
+      margin: 10px 0;
+      width: 250px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #ff6f61;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #e63946;
+    }
+    #message {
+      margin-top: 10px;
+    }
+    a {
+      color: lightgreen;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+      <img src="https://pbs.twimg.com/profile_images/1634150060589223937/kvVk3oRh_400x400.jpg" alt="MLRIT Logo" style="width: 120px; height: 120px; border-radius: 50%; margin-bottom: 10px;">
+      <h2 style="color:white;">User Signup</h2>
+    <form id="signup-form">
+      <input type="email" id="email" placeholder="Email" required><br>
+      <input type="password" id="password" placeholder="Password" required><br>
+      <button type="submit">Sign Up</button>
+      <p id="message"></p>
+    </form>
+    <p style="margin-top: 15px; color: black;">
+      Already have an account? <a href="index.html">Login now</a>
+    </p>
+  </div>
+
+  <!-- Firebase Auth Script -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBC6MDuCzqSEV_lG1zX6vS_W9tehj8IvGU",
+      authDomain: "major-project-1dafb.firebaseapp.com",
+      projectId: "major-project-1dafb",
+      storageBucket: "major-project-1dafb.appspot.com",
+      messagingSenderId: "269827725001",
+      appId: "1:269827725001:web:51a6041eef6ede66999f18",
+      measurementId: "G-X7R9LCC6SZ"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    document.getElementById("signup-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const messageEl = document.getElementById("message");
+
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          messageEl.style.color = "darkgreen";
+          messageEl.textContent = "Signup successful! You can now login.";
+        })
+        .catch((error) => {
+          messageEl.style.color = "red";
+          messageEl.textContent = "Signup failed: " + error.message;
+        });
+    });
+  </script>
+</body>
+</html>
