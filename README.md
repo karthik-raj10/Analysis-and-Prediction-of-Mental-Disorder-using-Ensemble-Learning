@@ -7,4 +7,4 @@ A web-based Mental Health Disorder Analyzer that uses machine learning to predic
 - 🌐 Clean and responsive HTML interface
 - ☁️ Hosted with Streamlit Cloud
 ## 🔗 Live Demo
-[Click here to use the app]([https://eppepallykarthikraj.streamlit.app/](https://karthik-raj10.github.io/Analysis-and-Prediction-of-Mental-Disorder-using-Ensemble-Learning/))
+[Click here to use the app](https://karthik-raj10.github.io/Analysis-and-Prediction-of-Mental-Disorder-using-Ensemble-Learning/)
